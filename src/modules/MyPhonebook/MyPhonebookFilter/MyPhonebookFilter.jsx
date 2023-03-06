@@ -1,20 +1,36 @@
 
-import PropTypes from "prop-types";
+import React from 'react';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { setFilter } from 'redux/filter/filter-slice';
+import { getFilter } from 'redux/filter/filter-selectors';
 
+const Filter = () => {
+  const onSetFilter = payload => {
+    dispatch(setFilter(payload));
+  };
 
-const  MyPhonebookFilter = ({filter, handleChange}) => {
-    return (
-        <div >
-            <label>Find contacts by name</label>
-            <input name="filter" value={filter} onChange={handleChange} placeholder ="Find contact"></input>
-        </div>
-    )
-}
+  const updateFilter = event => {
+    onSetFilter(event.target.value);
+  };
 
-export default  MyPhonebookFilter;
+  const dispatch = useDispatch();
 
-MyPhonebookFilter.propTypes = {
-    filter: PropTypes.string.isRequired,
-    handleChange: PropTypes.func.isRequired,
-}
+  const filter = useSelector(getFilter);
+
+  return (
+    <div>
+      <label  htmlFor="filter">
+        Find contacts by name
+      </label>
+      <input
+        type="text"
+        name="filter"
+        onChange={updateFilter}
+        value={filter}
+      />
+    </div>
+  );
+};
+
+export default Filter;

@@ -1,19 +1,17 @@
-import MyPhonebook from "modules/MyPhonebook/MyPhonebooks";
+import MyPhonebookForm from '../modules/MyPhonebook/MyPhonebookForm/MyPhonebookForm';
+import MyPhonebookList from '../modules/MyPhonebook/MyPhonebookList/MyPhonebookList';
+import MyPhonebookFilter from '../modules/MyPhonebook/MyPhonebookFilter/MyPhonebookFilter';
 
-export const App = () => {
+const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      <MyPhonebook />
+    <div>
+      <h1>Phonebook</h1>
+      <MyPhonebookForm />
+      <h2>Contacts</h2>
+      <MyPhonebookFilter />
+      <MyPhonebookList />
     </div>
   );
 };
+
 export default App;
